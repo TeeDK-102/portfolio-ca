@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đèn kéo quân - Phạm Đình Khương</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg, #141e30, #243b55);
+        }
+
+        h1 {
+            padding-top: 25px;
+            color: #ffd700;
+            text-shadow: 0 0 12px orange;
+        }
+
+        .info {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .scene {
+            width: 320px;
+            height: 320px;
+            margin: 50px auto;
+            perspective: 1000px;
+        }
+
+        .lantern {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: quay 12s linear infinite;
+        }
+
+        .lantern:hover {
+            animation-play-state: paused;
+        }
+
+        .face {
+            position: absolute;
+            width: 180px;
+            height: 220px;
+            left: 70px;
+            top: 50px;
+            border: 3px solid #ffd700;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 0 18px orange;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .face:hover {
+            box-shadow: 0 0 35px yellow;
+            border-color: white;
+        }
+
+        .face img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .face span {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.65);
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Sap xep 6 mat thanh hinh tron 3D */
+        .face:nth-child(1) {
+            transform: rotateY(0deg) translateZ(180px);
+        }
+
+        .face:nth-child(2) {
+            transform: rotateY(60deg) translateZ(180px);
+        }
+
+        .face:nth-child(3) {
+            transform: rotateY(120deg) translateZ(180px);
+        }
+
+        .face:nth-child(4) {
+            transform: rotateY(180deg) translateZ(180px);
+        }
+
+        .face:nth-child(5) {
+            transform: rotateY(240deg) translateZ(180px);
+        }
+
+        .face:nth-child(6) {
+            transform: rotateY(300deg) translateZ(180px);
+        }
+
+        @keyframes quay {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+        .note {
+            margin: 20px;
+            color: #ffe9a8;
+        }
+
+        button {
+            padding: 12px 24px;
+            margin: 8px;
+            border: none;
+            border-radius: 8px;
+            background: #ffd700;
+            color: #222;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: orange;
+        }
+
+        footer {
+            padding: 25px;
+            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🏮 ĐÈN KÉO QUÂN 🏮</h1>
+
+    <div class="info">
+        <p>Họ tên: Phạm Đình Khương</p>
+        <p>Mã số sinh viên: 231A011185</p>
+        <p>Đưa chuột vào một hình để đèn tạm dừng!</p>
+    </div>
+
+    <div class="scene">
+        <div class="lantern" id="lantern">
+
+            <div class="face">
+                <img src="c:\Users\ADMIN\Pictures\Screenshots\Ảnh chụp màn hình 2026-10-19 202449.png" alt="Hinh anh 1">
+                <span>Hình ảnh 1</span>
+            </div>
+
+            <div class="face">
+                <img src="c:\Users\ADMIN\Pictures\Screenshots\Ảnh chụp màn hình 2026-10-19 202411.png" alt="Hinh anh 2">
+                <span>Hình ảnh 2</span>
+            </div>
+
+            <div class="face">
+                <img src="c:\Users\ADMIN\Pictures\Screenshots\Ảnh chụp màn hình 2026-10-19 202351.png" alt="Hinh anh 3">
+                <span>Hình ảnh 3</span>
+            </div>
+
+            <div class="face">
+                <img src="c:\Users\ADMIN\Pictures\Screenshots\Ảnh chụp màn hình 2026-10-19 202329.png" alt="Hinh anh 4">
+                <span>Hình ảnh 4</span>
+            </div>
+
+            <div class="face">
+                <img src="c:\Users\ADMIN\Pictures\Screenshots\Ảnh chụp màn hình 2026-10-19 202247.png" alt="Hinh anh 5">
+                <span>Hình ảnh 5</span>
+            </div>
+
+            <div class="face">
+                <img src="c:\Users\ADMIN\Pictures\Screenshots\Ảnh chụp màn hình 2026-10-19 202247.png" alt="Hinh anh 6">
+                <span>Hình ảnh 6</span>
+            </div>
+
+        </div>
+    </div>
+
+    <p class="note" id="status">
+        Đèn đang quay. Rê chuột vào hình để dừng.
+    </p>
+
+    <button onclick="dungDen()">Dừng đèn</button>
+    <button onclick="quayDen()">Quay tiếp</button>
+
+    <footer>
+        Bài tập JavaScript - Hiệu ứng đèn kéo quân
+        <br>
+        Sinh viên: Phạm Đình Khương
+    </footer>
+
+    <script>
+        const den = document.getElementById("lantern");
+        const statusText = document.getElementById("status");
+
+        function dungDen() {
+            den.style.animationPlayState = "paused";
+            statusText.textContent = "Đèn đã dừng!";
+        }
+
+        function quayDen() {
+            den.style.animationPlayState = "running";
+            statusText.textContent = "Đèn đang quay!";
+        }
+
+        den.addEventListener("mouseenter", function() {
+            dungDen();
+        });
+
+        den.addEventListener("mouseleave", function() {
+            quayDen();
+        });
+    </script>
+
+</body>
+</html>
